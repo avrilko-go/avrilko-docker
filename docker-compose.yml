@@ -1,0 +1,69 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./app/nginx/config/conf.d:/etc/nginx/conf.d:rw
+      - ./app/nginx/config/nginx.conf:/etc/nginx/nginx.conf:rw
+      - ./app/nginx/log:/var/log/nginx:rw
+      - ./web:/etc/nginx/html:rw
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - net-php
+
+  php:
+    build:
+      context: ./source/php
+    volumes:
+      - ./web/:/etc/nginx/html:rw
+      - ./app/php/log:/var/log:rw
+      - ./app/php/config/php.ini:/usr/local/etc/php/php.ini:rw
+      - ./app/php/config/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+    restart: always
+    expose:
+      - "9000"
+    networks:
+      - net-php
+      - net-mysql
+      - net_redis
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+    ports:
+      - "3304:3306"
+    volumes:
+      - ./app/mysql/data:/var/lib/mysql:rw
+      - ./app/mysql/config/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:rw
+      - ./app/mysql/log:/var/log/mysql:rw
+    networks:
+      - net-mysql
+
+  redis:
+    image: redis:4.0
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./app/redis/log:/var/log/redis:rw
+      - ./app/redis/config/redis.conf:/usr/local/etc/redis/redis.conf:rw
+    networks:
+      - net_redis
+
+  memcached:
+    image: memcached:1.5.12-alpine
+    restart: always
+    expose:
+      - "11211"
+    networks:
+      - net-php
+
+networks:
+  net-php:
+  net-mysql:
+  net_redis:
