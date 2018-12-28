@@ -47,6 +47,8 @@ RUN apt-get install -y libmcrypt-dev libmhash-dev \
 	&& pecl install /home/mcrypt.tgz \
 	&& echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini
 
-##
+## mongodb扩展
+COPY mongodb-1.5.3.tgz /home/mongodb-1.5.3.tgz
+RUN cd /home && pecl install mongodb-1.5.3.tgz && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/mongodb.ini
 
 ENTRYPOINT php-fpm

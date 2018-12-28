@@ -63,6 +63,18 @@ services:
     networks:
       - net-php
 
+  mongodb:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./app/mongodb/data:/data/db
+      - ./app/mongodb/configdb:/data/configdb
+    networks:
+      - net-php
+
+
 networks:
   net-php:
   net-mysql:
