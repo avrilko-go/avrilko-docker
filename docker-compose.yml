@@ -25,6 +25,7 @@ services:
     restart: always
     expose:
       - "9000"
+      - "9001" ### 用于swoole反向代理
     networks:
       - net-php
       - net-mysql
