@@ -1,5 +1,5 @@
 ## docker lnmp一键环境 ##
-> 说明：内置php7.2 redis4.0 mysql5.7 memcached mongodb 开箱即用
+> 说明：内置php7.2 nginx redis4.0 mysql5.7 memcached mongodb 开箱即用
 >1. git clone 项目
 >2. 进入项目目录 sudo docker-compose up --build -d
 >3. 等待10分钟左右即可 访问localhost可以查看效果
