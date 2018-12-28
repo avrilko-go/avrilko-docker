@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a134b632-2b82-46f0-805d-a59355093115" name="Default" comment="" />
+    <list default="true" id="a134b632-2b82-46f0-805d-a59355093115" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,10 +22,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="error.log" pinned="false" current-in-tab="true">
+      <file leaf-file-name="error.log" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/mysql/log/error.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4358" />
+            <state relative-caret-position="392">
+              <caret line="250" column="9" selection-start-line="250" selection-start-column="9" selection-end-line="250" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="19">
+                <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+              </first_editor>
+              <second_editor />
+            </state>
           </provider>
         </entry>
       </file>
@@ -71,6 +87,9 @@
       <dir>$PROJECT_DIR$/app/nginx/config/conf.d</dir>
     </dirStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -85,6 +104,7 @@
         <option value="$PROJECT_DIR$/web/blog/index.php" />
         <option value="$PROJECT_DIR$/source/php/Dockerfile" />
         <option value="$PROJECT_DIR$/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -130,11 +150,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app/mysql/data" />
       <recent name="$PROJECT_DIR$/app/mysql/log" />
       <recent name="$PROJECT_DIR$/app/php/log" />
       <recent name="$PROJECT_DIR$/source/php" />
-      <recent name="$PROJECT_DIR$/app/redis/config" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -159,15 +179,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1545896205744</updated>
-      <workItem from="1545896207324" duration="22963000" />
+      <workItem from="1545896207324" duration="23178000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22963000" />
+    <option name="totallyTimeSpent" value="23178000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Remote Host" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33547926" />
@@ -177,7 +198,7 @@
       <window_info anchor="right" id="Database" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32943925" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Favorites" side_tool="true" />
@@ -294,7 +315,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/mysql/log/error.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4358" />
+        <state relative-caret-position="392">
+          <caret line="250" column="9" selection-start-line="250" selection-start-column="9" selection-end-line="250" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="19">
+            <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          </first_editor>
+          <second_editor />
+        </state>
       </provider>
     </entry>
   </component>
