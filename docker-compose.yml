@@ -74,6 +74,14 @@ services:
     networks:
       - net-php
 
+  elasticsearch:
+    image: elasticsearch
+    restart: always
+    expose:
+      - "9200"
+      - "9300"
+    networks:
+      - net-php
 
 networks:
   net-php:
