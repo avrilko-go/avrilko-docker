@@ -24,7 +24,7 @@ RUN composer config -g repo.packagist composer https://packagist.laravel-china.o
 COPY redis-4.1.1.tgz /home/redis.tgz
 RUN pecl install /home/redis.tgz && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini && rm -rf /home/redis.tgz
 
-# memcached 扩展(这个安装起来是真的蛋疼)
+# memcached 扩展(这个安装起来是真的蛋疼 libmemcached编译极慢 原因未知)
 COPY memcached-3.1.3 /home/memcached
 COPY libmemcached-1.0.18.tar.gz /home/libmemcached-1.0.18.tar.gz
 RUN tar zxvf /home/libmemcached-1.0.18.tar.gz \
@@ -65,5 +65,12 @@ echo root:$PHP_SSH_PASSWORD|chpasswd \
 RUN if [ $PHP_SSH_LINK_MODE = 2 ]; then \
     cd /root && mkdir .ssh && cd .ssh && touch authorized_keys && echo $PHP_SSH_ID_PUB > authorized_keys \
 ;fi
+
+## 安装zsh工具 方便容器内调试开发
+COPY install.sh /home/install.sh
+RUN apt-get -y install zsh && /bin/bash /home/install.sh && chsh -s /bin/zsh
+COPY zsh-autosuggestions.tar.bz2 /root/.oh-my-zsh/custom/plugins/zsh-autosuggestions.tar.bz2
+RUN tar xf /root/.oh-my-zsh/custom/plugins/zsh-autosuggestions.tar.bz2 && rm -rf /root/.zshrc
+COPY zshrc /root/.zshrc
 
 ENTRYPOINT ["/bin/bash", "/home/start.sh"]
