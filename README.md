@@ -2,9 +2,9 @@
 > 说明：内置php7.2 nginx redis4.0 mysql5.7 memcached mongodb elasticsearch 开箱即用
 >1. git clone 项目
 >2. cd项目目录  
->3. cp .env-example .env
+>3. ``` cp .env-example .env ```
 >4. 根据自己要求修改.env文件
->5. sudo docker-compose up --build -d
+>5. ``` sudo docker-compose up --build -d ```
 >6. 喝一杯咖啡 
 >7. 访问localhost可以查看效果
 
