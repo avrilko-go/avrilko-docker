@@ -70,7 +70,7 @@ RUN if [ $PHP_SSH_LINK_MODE = 2 ]; then \
 COPY install.sh /home/install.sh
 RUN apt-get -y install zsh && /bin/bash /home/install.sh && chsh -s /bin/zsh
 COPY zsh-autosuggestions.tar.bz2 /root/.oh-my-zsh/custom/plugins/zsh-autosuggestions.tar.bz2
-RUN tar xf /root/.oh-my-zsh/custom/plugins/zsh-autosuggestions.tar.bz2 && rm -rf /root/.zshrc
+RUN cd /root/.oh-my-zsh/custom/plugins/ && tar xvf zsh-autosuggestions.tar.bz2 && chmod -R 755 zsh-autosuggestions && chown -R root.root zsh-autosuggestions  && rm -rf /root/.zshrc
 COPY zshrc /root/.zshrc
 
 ENTRYPOINT ["/bin/bash", "/home/start.sh"]
