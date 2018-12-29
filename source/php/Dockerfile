@@ -31,7 +31,6 @@ RUN tar zxvf /home/libmemcached-1.0.18.tar.gz \
     && cd libmemcached-1.0.18 \
     && ./configure --prefix=/usr/local/libmemcached --with-memcached \
     && make -j$(getconf _NPROCESSORS_ONLN) && make install
-
 RUN cd /home/memcached && phpize && ./configure --disable-memcached-sasl --with-libmemcached-dir=/usr/local/libmemcached && make -j$(getconf _NPROCESSORS_ONLN) && make install \
 && echo "extension=memcached.so" > /usr/local/etc/php/conf.d/memcached.ini
 
@@ -54,18 +53,15 @@ RUN cd /home && pecl install mongodb-1.5.3.tgz && echo "extension=mongodb.so" > 
 ## 安装ssh 方便远程登录
 RUN apt-get -y install ssh && mv /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 COPY sshd_config /etc/ssh/sshd_config
-
 ARG PHP_SSH_LINK_MODE
 ARG PHP_SSH_PASSWORD
 ARG PHP_SSH_ID_PUB
 ENV PHP_SSH_LINK_MODE ${PHP_SSH_LINK_MODE}
 ENV PHP_SSH_PASSWORD ${PHP_SSH_PASSWORD}
 ENV PHP_SSH_ID_PUB ${PHP_SSH_ID_PUB}
-
 RUN if [ $PHP_SSH_LINK_MODE = 1 ]; then \
 echo root:$PHP_SSH_PASSWORD|chpasswd \
 ;fi
-
 RUN if [ $PHP_SSH_LINK_MODE = 2 ]; then \
     cd /root && mkdir .ssh && cd .ssh && touch authorized_keys && echo $PHP_SSH_ID_PUB > authorized_keys \
 ;fi
