@@ -6,6 +6,7 @@ $http->on("start", function ($server) {
 });
 
 $http->on("request", function ($request, $response) {
+    var_dump($request);
     $response->header("Content-Type", "text/plain");
     $response->end("Hello World\n");
 });

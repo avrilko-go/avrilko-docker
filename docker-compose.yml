@@ -9,7 +9,7 @@ services:
       - ./app/nginx/log:/var/log/nginx:rw
       - ./web:/etc/nginx/html:rw
     ports:
-      - "80:80"
+      - "${NGINX_LOCAL_PORT}:80"
     restart: always
     networks:
       - net-php
@@ -17,15 +17,22 @@ services:
   php:
     build:
       context: ./source/php
+      args:
+        PHP_SSH_LINK_MODE: ${PHP_SSH_LINK_MODE}
+        PHP_SSH_ID_PUB: ${PHP_SSH_ID_PUB}
+        PHP_SSH_PASSWORD: ${PHP_SSH_PASSWORD}
     volumes:
       - ./web/:/etc/nginx/html:rw
       - ./app/php/log:/var/log:rw
       - ./app/php/config/php.ini:/usr/local/etc/php/php.ini:rw
       - ./app/php/config/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ./app/php/start.sh:/home/start.sh:rw
     restart: always
+    ports:
+      - "${PHP_SSH_LOCAL_PORT}:22"
     expose:
       - "9000"
-      - "9001" ### 用于swoole反向代理
+      - "9001" ### 用于nginx反向代理swoole服务
     networks:
       - net-php
       - net-mysql
@@ -35,9 +42,9 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
     ports:
-      - "3304:3306"
+      - "${MYSQL_LOCAL_PORT}:3306"
     volumes:
       - ./app/mysql/data:/var/lib/mysql:rw
       - ./app/mysql/config/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:rw
@@ -49,7 +56,7 @@ services:
     image: redis:4.0
     restart: always
     ports:
-      - "6379:6379"
+      - "${REDIS_LOCAL_PORT}:6379"
     volumes:
       - ./app/redis/log:/var/log/redis:rw
       - ./app/redis/config/redis.conf:/usr/local/etc/redis/redis.conf:rw
@@ -68,7 +75,7 @@ services:
     image: mongo
     restart: always
     ports:
-      - "27017:27017"
+      - "${MONGODB_LOCAL_PORT}:27017"
     volumes:
       - ./app/mongodb/data:/data/db
       - ./app/mongodb/configdb:/data/configdb
