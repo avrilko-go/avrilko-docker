@@ -50,6 +50,12 @@ RUN apt-get install -y libmcrypt-dev libmhash-dev \
 COPY mongodb-1.5.3.tgz /home/mongodb-1.5.3.tgz
 RUN cd /home && pecl install mongodb-1.5.3.tgz && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/mongodb.ini
 
+## 安装pcntl 扩展
+COPY pcntl /home/pcntl
+RUN cd /home/pcntl && phpize && ./configure && make -j$(getconf _NPROCESSORS_ONLN) && make install \
+&& echo "extension=pcntl.so" > /usr/local/etc/php/conf.d/pcntl.ini
+
+
 ## 安装ssh 方便远程登录
 RUN apt-get -y install ssh && mv /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 COPY sshd_config /etc/ssh/sshd_config
