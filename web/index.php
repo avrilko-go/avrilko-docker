@@ -1,15 +1,8 @@
 <?php
-for ($i=0; $i < 10; $i++) {
-    $pid = pcntl_fork();
-    if ($pid == -1) {
-        exit('fork进程失败');
-    } elseif ($pid) {
-        $status = 0;
-        pcntl_wait($status, 1);
-    } else {
-        $pid = getmypid();
-        var_dump($pid);
-        sleep(3);
-        exit();
-    }
-}
+/**
+ * author: NickBai
+ * createTime: 2016/12/2 0002 上午 11:12
+ */
+//创建管道
+echo 1111;
+

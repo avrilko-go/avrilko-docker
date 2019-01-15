@@ -83,11 +83,14 @@ services:
       - net-php
 
   elasticsearch:
-    image: elasticsearch
+    build:
+      context: ./source/elasticsearch
     restart: always
     expose:
       - "9200"
       - "9300"
+    ports:
+      - "9200:9200"
     networks:
       - net-php
 

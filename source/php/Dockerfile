@@ -8,6 +8,7 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 
 COPY sources.list /etc/apt/sources.list
 
+## 不检查源的有效性
 RUN apt-get -o Acquire::Check-Valid-Until=false update && apt-get -y upgrade
 
 RUN apt-get install -y --no-install-recommends mysql-client libpq-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev  ntpdate cron vim unzip git

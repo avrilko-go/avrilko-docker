@@ -1,5 +1,5 @@
 ## docker lnmp一键环境 ##
-> 说明：内置php7.2 nginx redis4.0 mysql5.7 memcached mongodb elasticsearch ssh配置 zsh美化 开箱即用
+> 说明：内置php7.2 nginx redis4.0 mysql5.7 memcached mongodb elasticsearch(默认安装中文分词插件) ssh配置 zsh美化 开箱即用
 >1. git clone 项目
 >2. cd项目目录  
 >3. ``` cp .env-example .env ```
