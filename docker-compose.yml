@@ -50,7 +50,22 @@ services:
       - "9001" ### 用于nginx反向代理swoole服务
     networks:
       - net-php
+  
+  php56:
+    build:
+      context: ./source/php56
+    volumes:
+      - ./web/:/usr/local/openresty/nginx/html:rw,cached
+      - ./app/php/start.sh:/home/start.sh:rw
+    restart: always
+    ports:
+      - "29:22"
+    expose:
+      - "9000"
+    networks:
+      - net-php
 
+  
   mysql:
     image: mysql:5.7
     restart: always
