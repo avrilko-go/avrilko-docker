@@ -4,7 +4,7 @@ ARG TIME_ZONE=Asia/Shanghai
 
 RUN ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /etc/timezone
 
-RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv /etc/apt/sources.list.d/buster.list  /etc/apt/sources.list.d/buster.list.bak
 
 COPY sources.list /etc/apt/sources.list
 
@@ -19,7 +19,7 @@ RUN docker-php-ext-install gd pdo_mysql mysqli zip exif bcmath sockets
 ## composer
 ADD composer.phar /usr/local/bin/composer
 RUN chmod 755 /usr/local/bin/composer
-RUN composer config -g repo.packagist composer https://packagist.laravel-china.org
+RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 ##redis扩展
 COPY redis-4.1.1.tgz /home/redis.tgz
